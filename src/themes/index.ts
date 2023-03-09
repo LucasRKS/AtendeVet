@@ -1,24 +1,31 @@
 import { extendTheme } from "native-base";
 
 export const THEME = extendTheme({
-    colors: {
-        primary: {
-            100: '#dfdfdf'
-        }
+  colors: {
+    primary: {
+      100: '#11414bff'
     },
-    fonts: {
-      heading: 'Roboto_700Bold',
-      body: 'Roboto_400Regular',
+    gray: {
+      100: '#dfdfdf',
     },
-    fontSizes: {
-      xs: 12,
-      sm: 14,
-      md: 16,
-      lg: 18,
-      xl: 20,
-    },
-    sizes: {
-      14: 56,
-      33: 148
+    bgAtende: {
+      blue: '#11414b',
+      white: '#dfdfdf'
     }
+  },
+  fonts: {
+    heading: 'Roboto_700Bold',
+    body: 'Roboto_400Regular',
+  },
+  fontSizes: {
+    xs: 12,
+    sm: 14,
+    md: 16,
+    lg: 18,
+    xl: 20,
+  },
+  sizes: {
+    14: 56,
+    33: 148
+  }
 });
