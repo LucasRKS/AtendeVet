@@ -1,9 +1,10 @@
-import { StatusBar, Text } from 'react-native';
-import { NativeBaseProvider, Box } from "native-base";
+import { StatusBar } from 'react-native';
+import { NativeBaseProvider } from "native-base";
 import { useFonts, Roboto_400Regular } from '@expo-google-fonts/roboto';
 
 import { THEME } from './src/themes';
-import { LoadingScreen } from '@components/LoadingScreen'
+import { LoadingScreen } from '@components/LoadingScreen';
+import { Routes } from '@routes/index';
 
 export default function App() {
   const [fontsLoaded] = useFonts({Roboto_400Regular});
@@ -16,7 +17,7 @@ export default function App() {
         translucent 
       />
 
-      {fontsLoaded ? <Text>Hello</Text> : <LoadingScreen/>}
+      {fontsLoaded ? <Routes /> : <LoadingScreen/>}
     </NativeBaseProvider>
   );
 }
