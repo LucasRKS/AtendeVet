@@ -1,13 +1,15 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { Login } from '@screens/Login';
+import { Home } from "@screens/Home";
+import { PetRecord } from "@screens/PetRecord";
 
-const { Navigator, Screen } = createNativeStackNavigator();
+const { Navigator, Screen } = createBottomTabNavigator();
 
 export function AppRoutes() {
-  return  (
-    <Navigator initialRouteName='login' screenOptions={{ headerShown: false }}>
-      <Screen name="login" component={Login} />
+  return(
+    <Navigator>
+      <Screen name='home' component={Home}/>
+      <Screen name='petRecord' component={PetRecord} />
     </Navigator>
   )
 }

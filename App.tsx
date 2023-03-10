@@ -1,13 +1,16 @@
 import { StatusBar } from 'react-native';
 import { NativeBaseProvider } from "native-base";
-import { useFonts, Roboto_400Regular } from '@expo-google-fonts/roboto';
+import { useFonts, Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto';
+
+import { Routes } from '@routes/index';
+
+import { AuthContextProvider } from '@contexts/AuthContext';
 
 import { THEME } from './src/themes';
 import { LoadingScreen } from '@components/LoadingScreen';
-import { Routes } from '@routes/index';
 
 export default function App() {
-  const [fontsLoaded] = useFonts({Roboto_400Regular});
+  const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold });
 
   return (
     <NativeBaseProvider theme={THEME}>
@@ -17,7 +20,9 @@ export default function App() {
         translucent 
       />
 
-      {fontsLoaded ? <Routes /> : <LoadingScreen/>}
+      <AuthContextProvider>
+        {fontsLoaded ? <Routes /> : <LoadingScreen />}
+      </AuthContextProvider>
     </NativeBaseProvider>
   );
 }

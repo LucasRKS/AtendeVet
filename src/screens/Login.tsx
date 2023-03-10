@@ -8,11 +8,10 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
-
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
 
-import logo from '@assets/logo.png';
+// import background from '@assets/background.png';
 
 type formData = {
   document: string;
@@ -36,7 +35,12 @@ export function Login() {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <VStack flex={1} bg="bgAtende.blue" padding={10}>
-        {/* <Image source={logo} alt='Atende Vet'/> */}
+        {/* <Image 
+          source={background} 
+          alt='Atende Vet'
+          resizeMode='contain'
+          position='absolute'
+        /> */}
         <Center my={24} rounded={12}>
           <Text fontSize='xl' color='white' mb={10}>Seu pet, nossa missão!</Text>
 
