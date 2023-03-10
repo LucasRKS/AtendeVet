@@ -11,6 +11,8 @@ import * as yup from 'yup';
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
 
+import { useAuth } from "@hooks/useAuth";
+
 // import background from '@assets/background.png';
 
 type formData = {
@@ -29,7 +31,8 @@ export function Login() {
   });
 
   function handleSignIn({ document, password }: formData) {
-    console.log('hello')
+    const { signIn } = useAuth();
+    signIn(document, password);
   }
 
   return (

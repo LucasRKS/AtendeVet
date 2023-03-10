@@ -7,7 +7,6 @@ import { AuthRoutes } from "./auth.routes";
 export function Routes() {
   const theme = DefaultTheme;
   const { user } = useAuth();
-  console.log(user);
 
   return(
     <NavigationContainer theme={theme}>
