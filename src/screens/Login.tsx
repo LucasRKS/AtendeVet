@@ -4,13 +4,20 @@ import {
   Center,
   ScrollView,
   Text } from "native-base";
+  import { useForm, Controller } from "react-hook-form";
 
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
 
 import logo from '@assets/logo.png';
 
-export function Login () {
+export function Login() {
+  const { control, handleSubmit } = useForm();
+
+  function handleSignIn(data: any) {
+    console.log('Login', data);
+  }
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <VStack flex={1} bg="bgAtende.blue" padding={10}>
@@ -18,10 +25,34 @@ export function Login () {
         <Center my={24} rounded={12}>
           <Text fontSize='xl' color='white' mb={10}>Seu pet, nossa missão!</Text>
 
-          <Input placeholder="Documento" keyboardType="numeric"/>
-          <Input placeholder="Senha" secureTextEntry/>
+          <Controller 
+            control={control} 
+            name='document' 
+            render={({field: { onChange, value }}) => (
+              <Input 
+                placeholder="Documento" 
+                keyboardType="numeric" 
+                onChangeText={onChange} 
+                value={value} 
+              />
+            )}
+          />
+          <Controller 
+            control={control} 
+            name='password' 
+            render={({field: { onChange, value }}) => (
+              <Input 
+                placeholder="Senha" 
+                secureTextEntry
+                onChangeText={onChange} 
+                value={value} 
+                onSubmitEditing={handleSubmit(handleSignIn)}
+                returnKeyType='send'
+              />
+            )}
+          />
           
-          <Button title="Acessar" w="full" h="12"/>
+          <Button title="Acessar" w="full" h="12" onPress={handleSubmit(handleSignIn)}/>
         </Center>
       </VStack>
     </ScrollView>
