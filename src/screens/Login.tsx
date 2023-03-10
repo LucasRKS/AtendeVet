@@ -11,11 +11,16 @@ import { Button } from '@components/Button';
 
 import logo from '@assets/logo.png';
 
-export function Login() {
-  const { control, handleSubmit } = useForm();
+type formData = {
+  document: string;
+  password: string;
+}
 
-  function handleSignIn(data: any) {
-    console.log('Login', data);
+export function Login() {
+  const { control, handleSubmit } = useForm<formData>();
+
+  function handleSignIn({ document, password }: formData) {
+    console.log('hello')
   }
 
   return (
