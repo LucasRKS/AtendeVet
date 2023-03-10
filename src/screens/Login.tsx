@@ -4,7 +4,10 @@ import {
   Center,
   ScrollView,
   Text } from "native-base";
-  import { useForm, Controller } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form"; 
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+
 
 import { Input } from '@components/Input';
 import { Button } from '@components/Button';
@@ -16,8 +19,15 @@ type formData = {
   password: string;
 }
 
+const loginSchema = yup.object({
+  document: yup.string().required('Informe o documento'),
+  password: yup.string().required('Informe a senha')
+});
+
 export function Login() {
-  const { control, handleSubmit, formState: { errors } } = useForm<formData>();
+  const { control, handleSubmit, formState: { errors } } = useForm<formData>({
+    resolver: yupResolver(loginSchema)
+  });
 
   function handleSignIn({ document, password }: formData) {
     console.log('hello')
@@ -32,10 +42,7 @@ export function Login() {
 
           <Controller 
             control={control} 
-            name='document' 
-            rules={{
-              required: 'Informe o documento'
-            }}
+            name='document'
             render={({field: { onChange, value }}) => (
               <Input 
                 placeholder="Documento" 
@@ -50,9 +57,6 @@ export function Login() {
           <Controller 
             control={control} 
             name='password'
-            rules={{
-              required: 'Informe a senha'
-            }} 
             render={({field: { onChange, value }}) => (
               <Input 
                 placeholder="Senha" 
