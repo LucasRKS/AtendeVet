@@ -17,7 +17,7 @@ type formData = {
 }
 
 export function Login() {
-  const { control, handleSubmit } = useForm<formData>();
+  const { control, handleSubmit, formState: { errors } } = useForm<formData>();
 
   function handleSignIn({ document, password }: formData) {
     console.log('hello')
@@ -33,24 +33,33 @@ export function Login() {
           <Controller 
             control={control} 
             name='document' 
+            rules={{
+              required: 'Informe o documento'
+            }}
             render={({field: { onChange, value }}) => (
               <Input 
                 placeholder="Documento" 
                 keyboardType="numeric" 
                 onChangeText={onChange} 
                 value={value} 
+                errorMessage={errors.document?.message}
               />
             )}
           />
+
           <Controller 
             control={control} 
-            name='password' 
+            name='password'
+            rules={{
+              required: 'Informe a senha'
+            }} 
             render={({field: { onChange, value }}) => (
               <Input 
                 placeholder="Senha" 
                 secureTextEntry
                 onChangeText={onChange} 
                 value={value} 
+                errorMessage={errors.password?.message}
                 onSubmitEditing={handleSubmit(handleSignIn)}
                 returnKeyType='send'
               />
