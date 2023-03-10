@@ -13,7 +13,7 @@ import { Button } from '@components/Button';
 
 import { useAuth } from "@hooks/useAuth";
 
-// import background from '@assets/background.png';
+import logo from '@assets/logo.png';
 
 type formData = {
   document: string;
@@ -30,22 +30,24 @@ export function Login() {
     resolver: yupResolver(loginSchema)
   });
 
-  function handleSignIn({ document, password }: formData) {
+  async function handleSignIn({ document, password }: formData) {
     const { signIn } = useAuth();
-    signIn(document, password);
+    await signIn(document, password);
   }
 
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-      <VStack flex={1} bg="bgAtende.blue" padding={10}>
-        {/* <Image 
-          source={background} 
-          alt='Atende Vet'
-          resizeMode='contain'
-          position='absolute'
-        /> */}
-        <Center my={24} rounded={12}>
-          <Text fontSize='xl' color='white' mb={10}>Seu pet, nossa missão!</Text>
+      <VStack flex={1} padding={10} bg='white'>
+        <Center>
+          <Image 
+            source={logo} 
+            alt='Atende Vet'
+            resizeMode='contain'
+            height={200}
+            my={10}
+          />
+          
+          <Text fontSize='xl' color='black' mb={8}>Seu pet, nossa missão!</Text>
 
           <Controller 
             control={control} 
@@ -77,7 +79,7 @@ export function Login() {
             )}
           />
           
-          <Button title="Acessar" w="full" h="12" onPress={handleSubmit(handleSignIn)}/>
+          <Button title="Acessar" w="full" onPress={handleSubmit(handleSignIn)}/>
         </Center>
       </VStack>
     </ScrollView>

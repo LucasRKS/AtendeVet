@@ -12,9 +12,10 @@ export function Input({errorMessage, isInvalid, ...rest}:Props) {
       <NativeBaseInput
         h={12}
         px={4}
-        borderWidth={0}
+        borderWidth={1}
+        borderColor='gray.100'
         fontSize="md"
-        color="white"
+        color="black"
         fontFamily="body" 
         isInvalid={invalid}
         _invalid={{
@@ -22,7 +23,8 @@ export function Input({errorMessage, isInvalid, ...rest}:Props) {
           borderColor: 'red.500'
         }}
         _focus={{
-          borderWidth: 1
+          borderWidth: 1,
+          borderColor: 'primary.100'
         }}
         {...rest}
       />

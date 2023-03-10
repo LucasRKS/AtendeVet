@@ -7,11 +7,12 @@ type Props = IButtonProps & {
 export function Button({ title, ...rest }:Props) {
   return(
     <NativeBaseButton
-      fontFamily="heading"
       rounded="sm"
+      h={14} 
+      my={8}
       {...rest}
     >
-      <Text>
+      <Text fontSize='lg' color='white' fontFamily='heading'>
         {title}
       </Text>
     </NativeBaseButton>
