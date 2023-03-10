@@ -10,6 +10,7 @@ export function Button({ title, ...rest }:Props) {
       rounded="sm"
       h={14} 
       my={8}
+      backgroundColor='primary.100'
       {...rest}
     >
       <Text fontSize='lg' color='white' fontFamily='heading'>
